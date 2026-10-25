@@ -1,0 +1,13 @@
+Ngetik pakai keyboard layar Windows itu capek: klik huruf satu per satu 😮‍💨
+
+Jadi aku bikin Slide Keyboard. Tekan, geser lewat huruf-hurufnya, lepas, katanya langsung terketik. Kayak swipe di HP, tapi buat Windows.
+
+• Bahasa Indonesia, Inggris, Arab
+• Ngetik ke browser, Notepad, editor
+• Offline, teks nggak dikirim ke mana-mana
+• Gratis & open source
+
+Download untuk Windows 10/11:
+github.com/farishiddiq/slide-keyboard
+
+Ini versi pertama. Kalau ada kata yang sering salah ditebak, kabarin ya 🙏
