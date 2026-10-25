@@ -1,12 +1,26 @@
 # Slide Keyboard
 
 **Swipe-to-type on Windows.** A floating on-screen keyboard for Windows 10/11 with real swipe typing
-(press, slide across the letters, release) for **Indonesian, English and Arabic**. It types into any app:
-browsers, Notepad, chat apps, editors.
+(press, slide across the letters, release) for **Indonesian, English and Arabic**. It types into the app you
+are using: browsers, Notepad, editors, regular Windows text fields.
 
 Prediction runs entirely on your PC. Nothing you type is uploaded or saved.
 
 **Download:** [latest release](https://github.com/farishiddiq/slide-keyboard/releases/latest) (`SlideKeyboard-<version>-win-x64.msi`)
+
+## Screenshots
+
+Swiping s‑e‑l‑a‑m‑a‑t: the suggestion bar shows the live guess while the key under the pointer grows.
+
+![Slide Keyboard while swiping: the suggestion bar previews "selam"](promo/assets/keyboard-swiping.jpg)
+
+After releasing, the word is typed and the alternatives stay in the bar (selamat · selambat · slamat).
+
+![Slide Keyboard after the swipe: suggestion bar shows selamat, selambat, slamat](promo/assets/keyboard-large-result.jpg)
+
+<p align="center">
+  <img src="promo/out/slide-keyboard-portrait.png" alt="Slide Keyboard launch poster: Geser, lepas, jadi kata." width="420">
+</p>
 
 ## Features
 
