@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide Keyboard poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=block" rel="stylesheet">
+<!--
+  Promo poster for Slide Keyboard. Render one format per screenshot:
+    poster.html?f=portrait  1080x1350 (Threads, Instagram, Facebook feed)
+    poster.html?f=square    1080x1080 (WhatsApp, Instagram square)
+    poster.html?f=story     1080x1920 (Instagram/WhatsApp status)
+  The keyboard image is a real screenshot of the app right after swiping "selamat".
+  The blue stroke on it illustrates that swipe (the app draws the same trail while you swipe).
+-->
+<style>
+  :root {
+    --ground: #101215;
+    --field: #1c1f24;
+    --ink: #eef1f5;
+    --ink-soft: #b7bfca;
+    --accent: #7ca5ff;
+    --action: #7ca5ff;
+    --action-ink: #0e1420;
+    --trail: #8cb2ff;
+    --face: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--ground); }
+  body {
+    width: 1080px; height: 1350px; overflow: hidden;
+    color: var(--ink); font-family: var(--face);
+    display: grid; grid-template-rows: auto auto 1fr auto auto;
+    padding: 60px 64px 56px;
+  }
+  .brand { display: flex; align-items: center; gap: 16px; font-size: 30px; font-weight: 600; letter-spacing: -0.01em; }
+  .brand img { width: 56px; height: 56px; }
+  .brand span { color: var(--ink-soft); font-weight: 400; }
+
+  h1 {
+    margin-top: 44px;
+    font-size: 136px; line-height: 0.92; letter-spacing: -0.03em; font-weight: 800;
+  }
+  .lede { margin-top: 26px; max-width: 32ch; font-size: 31px; line-height: 1.3; color: var(--ink); }
+
+  /* The keyboard runs to the edges: it is the poster's picture. */
+  .shot { position: relative; margin: 44px -64px 0; align-self: center; background: var(--field); }
+  .shot img { display: block; width: 100%; height: auto; clip-path: inset(6px 6px 8px 6px); }
+  .shot svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .shot path { fill: none; stroke: var(--trail); stroke-width: 11; stroke-linecap: round; stroke-linejoin: round; opacity: 0.78; }
+  .shot circle { fill: var(--trail); }
+
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 40px; }
+  .facts p { font-size: 23px; line-height: 1.32; color: var(--ink-soft); }
+  .facts strong { display: block; color: var(--ink); font-weight: 600; font-size: 27px; margin-bottom: 8px; letter-spacing: -0.01em; }
+
+  .cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+  .button {
+    background: var(--action); color: var(--action-ink); border-radius: 999px;
+    padding: 22px 40px; font-size: 32px; font-weight: 800; letter-spacing: -0.01em; white-space: nowrap;
+  }
+  .where { text-align: right; font-size: 26px; line-height: 1.35; color: var(--ink-soft); }
+  .where b { color: var(--ink); font-weight: 600; }
+
+  /* Square: headline and picture carry it; the facts compress to one line. */
+  body.square { height: 1080px; padding: 60px 56px 56px; }
+  body.square h1 { margin-top: 36px; font-size: 118px; }
+  body.square .lede { display: none; }
+  body.square .shot { margin: 40px -56px 0; }
+  body.square .facts { display: none; }
+  body.square .cta { margin-top: 40px; }
+  body.square .button { font-size: 30px; padding: 22px 38px; }
+
+  /* Story: tall, the picture grows and the facts stack. */
+  body.story { height: 1920px; padding: 150px 64px 280px; }
+  body.story h1 { margin-top: 70px; font-size: 160px; }
+  body.story .lede { margin-top: 40px; font-size: 38px; }
+  body.story .shot { margin-top: 64px; }
+  body.story .facts { grid-template-columns: 1fr; gap: 30px; margin-top: 60px; }
+  body.story .facts p { font-size: 30px; }
+  body.story .facts strong { font-size: 36px; }
+  body.story .cta { flex-direction: row; align-items: center; margin-top: 56px; }
+  body.story .where { text-align: right; }
+</style>
+</head>
+<body>
+  <div class="brand"><img src="assets/app-icon.png" alt="">Slide Keyboard <span>untuk Windows</span></div>
+
+  <h1>Geser, lepas,<br>jadi kata.</h1>
+  <p class="lede">Tarik satu garis lewat huruf-hurufnya, lepas, katanya langsung terketik. Keyboard layar untuk Windows 10 dan 11.</p>
+
+  <figure class="shot">
+    <img src="assets/keyboard-large-result.jpg" alt="Slide Keyboard setelah swipe s-e-l-a-m-a-t; bar saran menampilkan selamat">
+    <svg viewBox="0 0 1568 586" aria-hidden="true">
+      <path d="M318 300 Q 360 236 398 204 Q 420 186 470 196 L 1352 284 Q 1404 292 1352 296 L 214 296 Q 160 296 214 306 L 1196 382 Q 1250 390 1196 382 L 214 300 Q 166 296 206 278 L 690 204"/>
+      <circle cx="706" cy="197" r="14"/>
+    </svg>
+  </figure>
+
+  <div class="facts">
+    <p><strong>Ke aplikasi apa saja</strong>Browser, Notepad, editor. Keyboard tidak mencuri fokus.</p>
+    <p><strong>ID · EN · العربية</strong>Ganti bahasa sekali ketuk. Arab kanan-ke-kiri.</p>
+    <p><strong>Offline, gratis</strong>Prediksi jalan di PC-mu. Tak ada teks yang diunggah.</p>
+  </div>
+
+  <div class="cta">
+    <span class="button">Unduh gratis</span>
+    <p class="where"><b>github.com/farishiddiq</b><br>/slide-keyboard</p>
+  </div>
+
+  <script>
+    const f = new URLSearchParams(location.search).get('f');
+    if (f === 'square' || f === 'story') document.body.classList.add(f);
+  </script>
+</body>
+</html>
