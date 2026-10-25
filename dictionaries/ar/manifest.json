@@ -1,0 +1,12 @@
+{
+  "code": "ar",
+  "name": "Arabic",
+  "nativeName": "العربية",
+  "shortLabel": "AR",
+  "culture": "ar-SA",
+  "rtl": true,
+  "version": "1.0.0",
+  "wordsFile": "words.txt",
+  "bigramsFile": "bigrams.txt",
+  "layoutFile": "layout.json"
+}

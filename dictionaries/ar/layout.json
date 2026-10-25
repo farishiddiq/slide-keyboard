@@ -1,0 +1,46 @@
+{
+  // Standard Arabic (101) letter arrangement, listed left-to-right as it appears on screen.
+  // RTL mirrors the function keys (backspace moves to the left) and the suggestion bar.
+  "rtl": true,
+  "hasShift": false,
+  "rows": [
+    "ض ص ث ق ف غ ع ه خ ح ج د",
+    "ش س ي ب ل ا ت ن م ك ط",
+    "ئ ء ؤ ر ى ة و ز ظ ذ"
+  ],
+  "comma": "،",
+  "period": ".",
+  "digits": "١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ٠",
+  "symbolsLabel": "١٢٣؟",
+  "lettersLabel": "أبج",
+  "symbolRows": [
+    "@ # $ _ & - + ( ) /",
+    "* \" ' : ؛ ! ؟"
+  ],
+  "longPress": {
+    "ا": "أ إ آ ٱ",
+    "ء": "أ إ ؤ ئ",
+    "ي": "ئ ى",
+    "ه": "ة",
+    "و": "ؤ",
+    "ك": "گ",
+    "ف": "ڤ",
+    "ج": "چ",
+    "ب": "پ",
+    "،": ", ؛ ؟",
+    ".": "؟ ! ، : ؛ « » …",
+    "١": "1", "٢": "2", "٣": "3", "٤": "4", "٥": "5",
+    "٦": "6", "٧": "7", "٨": "8", "٩": "9", "٠": "0"
+  },
+  // Letters without their own key: a swipe passes over the base letter.
+  "aliases": {
+    "أ": "ا",
+    "إ": "ا",
+    "آ": "ا",
+    "ٱ": "ا",
+    "گ": "ك",
+    "ڤ": "ف",
+    "پ": "ب",
+    "چ": "ج"
+  }
+}

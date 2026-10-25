@@ -1,0 +1,22 @@
+{
+  "rows": [
+    "q w e r t y u i o p",
+    "a s d f g h j k l",
+    "z x c v b n m"
+  ],
+  "hasShift": true,
+  "comma": ",",
+  "period": ".",
+  "digits": "1 2 3 4 5 6 7 8 9 0",
+  "symbolsLabel": "?123",
+  "lettersLabel": "ABC",
+  "longPress": {
+    "a": "á à â ä",
+    "e": "é è ê ë",
+    "i": "í ì î ï",
+    "o": "ó ò ô ö",
+    "u": "ú ù û ü",
+    ".": "? ! , ' \" : ; - … @ #",
+    ",": "; : ' \" !"
+  }
+}

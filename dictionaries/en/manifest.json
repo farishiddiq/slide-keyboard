@@ -1,0 +1,12 @@
+{
+  "code": "en",
+  "name": "English",
+  "nativeName": "English",
+  "shortLabel": "EN",
+  "culture": "en-US",
+  "rtl": false,
+  "version": "1.0.0",
+  "wordsFile": "words.txt",
+  "bigramsFile": "bigrams.txt",
+  "layoutFile": "layout.json"
+}

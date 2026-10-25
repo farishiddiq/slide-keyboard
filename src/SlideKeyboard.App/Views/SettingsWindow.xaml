@@ -1,0 +1,229 @@
+<Window x:Class="SlideKeyboard.App.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Slide Keyboard Settings" Width="460" Height="680" MinWidth="380" MinHeight="400"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResize"
+        Background="{DynamicResource Kb.Background}" Foreground="{DynamicResource Kb.Text}"
+        FontFamily="{StaticResource UiFont}" FontSize="13"
+        Binding.SourceUpdated="OnSourceUpdated">
+    <Window.Resources>
+        <Style x:Key="Section" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{DynamicResource Kb.Accent}"/>
+            <Setter Property="Margin" Value="0,18,0,6"/>
+        </Style>
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="{DynamicResource Kb.Key}"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="14,8"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{DynamicResource Kb.Text}"/>
+            <Setter Property="Margin" Value="0,6"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Label" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,6,12,6"/>
+        </Style>
+        <Style TargetType="Slider">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="IsMoveToPointEnabled" Value="True"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="MinWidth" Value="170"/>
+            <Setter Property="DisplayMemberPath" Value="Label"/>
+            <Setter Property="SelectedValuePath" Value="Value"/>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <Border DockPanel.Dock="Bottom" Padding="18,10" Background="{DynamicResource Kb.KeySpecial}">
+            <DockPanel>
+                <Button DockPanel.Dock="Right" Content="Close" Padding="18,4" Click="OnCloseClick" IsDefault="True"/>
+                <Button DockPanel.Dock="Left" Content="Quit app" Padding="12,4" Click="OnExitClick"/>
+                <Button Content="Open dictionaries folder" Padding="12,4" Margin="8,0" HorizontalAlignment="Left" Click="OnDictionariesClick"/>
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="18,0,18,18">
+            <StackPanel>
+                <TextBlock Style="{StaticResource Section}" Text="LANGUAGES"/>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{StaticResource Label}" Text="Active language"/>
+                            <ComboBox x:Name="LanguageCombo" Grid.Column="1" SelectionChanged="OnLanguageSelected"/>
+                        </Grid>
+                        <TextBlock Style="{StaticResource Label}" Text="Enabled (cycle order: globe key, ID | EN | AR button, Ctrl+Space)" TextWrapping="Wrap" Foreground="{DynamicResource Kb.SubText}"/>
+                        <StackPanel x:Name="EnabledLanguagesPanel" Orientation="Horizontal"/>
+                        <CheckBox Content="Ctrl+Space switches language (global shortcut)" IsChecked="{Binding LanguageHotkey, NotifyOnSourceUpdated=True}"/>
+                        <TextBlock x:Name="HotkeyWarning" Visibility="Collapsed" Foreground="#D9534F" TextWrapping="Wrap"
+                                   Text="Ctrl+Space is already used by another application; use the language button instead."/>
+                        <CheckBox Content="Detect English / Indonesian automatically" IsChecked="{Binding AutoDetectLanguage, NotifyOnSourceUpdated=True}"/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Style="{StaticResource Section}" Text="PERSONAL DICTIONARY"/>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <TextBlock Foreground="{DynamicResource Kb.SubText}" TextWrapping="Wrap" FontSize="12" Margin="0,4"
+                                   Text="Words saved here are suggested and can be swiped. Tip: type a new word, tap it in quotes in the suggestion bar, then tap '+ Save'."/>
+                        <Grid Margin="0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{StaticResource Label}" Text="Language"/>
+                            <ComboBox x:Name="UserWordsLanguageCombo" Grid.Column="1" SelectionChanged="OnUserWordsLanguageChanged"/>
+                        </Grid>
+                        <Grid Margin="0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="NewWordBox" Padding="4,3" KeyDown="OnNewWordKeyDown"/>
+                            <Button Grid.Column="1" Content="Add word" Padding="12,3" Margin="8,0,0,0" Click="OnAddUserWord"/>
+                        </Grid>
+                        <TextBlock x:Name="UserWordsStatus" Foreground="{DynamicResource Kb.SubText}" FontSize="12"/>
+                        <TextBlock x:Name="UserWordsEmpty" Text="No saved words yet." Foreground="{DynamicResource Kb.SubText}" Margin="0,6"/>
+                        <ItemsControl x:Name="UserWordsList" MaxHeight="180">
+                            <ItemsControl.Template>
+                                <ControlTemplate TargetType="ItemsControl">
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                        <ItemsPresenter/>
+                                    </ScrollViewer>
+                                </ControlTemplate>
+                            </ItemsControl.Template>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel Margin="0,2">
+                                        <Button DockPanel.Dock="Right" Content="Remove" Padding="8,1" Tag="{Binding}" Click="OnRemoveUserWord"/>
+                                        <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Style="{StaticResource Section}" Text="TYPING"/>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <CheckBox Content="Swipe typing (slide across letters)" IsChecked="{Binding SwipeTyping, NotifyOnSourceUpdated=True}"/>
+                        <CheckBox Content="Show swipe trail" IsChecked="{Binding SwipeTrail, NotifyOnSourceUpdated=True}"/>
+                        <CheckBox Content="Word suggestions" IsChecked="{Binding Suggestions, NotifyOnSourceUpdated=True}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{StaticResource Label}" Text="Suggestions shown"/>
+                            <ComboBox x:Name="SuggestionCountCombo" Grid.Column="1" SelectedValue="{Binding SuggestionCount, NotifyOnSourceUpdated=True}"/>
+                        </Grid>
+                        <CheckBox Content="Auto-correction (backspace right after undoes it)" IsChecked="{Binding AutoCorrect, NotifyOnSourceUpdated=True}"/>
+                        <CheckBox Content="Auto-capitalize sentences" IsChecked="{Binding AutoCapitalize, NotifyOnSourceUpdated=True}"/>
+                        <CheckBox Content="Double-space types a period" IsChecked="{Binding DoubleSpacePeriod, NotifyOnSourceUpdated=True}"/>
+                        <CheckBox Content="Enlarged key preview on press" IsChecked="{Binding KeyPopup, NotifyOnSourceUpdated=True}"/>
+                        <CheckBox Content="Key sound" IsChecked="{Binding Sound, NotifyOnSourceUpdated=True}"/>
+                        <CheckBox x:Name="HapticsCheck" Content="Vibration / haptic feedback" IsChecked="{Binding Haptics, NotifyOnSourceUpdated=True}"/>
+                        <TextBlock x:Name="HapticsNote" Foreground="{DynamicResource Kb.SubText}" TextWrapping="Wrap" Margin="22,0,0,4"
+                                   Text="No vibration hardware detected on this PC."/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Style="{StaticResource Section}" Text="APPEARANCE"/>
+                <Border Style="{StaticResource Card}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="44"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Style="{StaticResource Label}" Text="Theme"/>
+                        <ComboBox x:Name="ThemeCombo" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right"
+                                  SelectedValue="{Binding Theme, NotifyOnSourceUpdated=True}"/>
+
+                        <TextBlock Grid.Row="1" Style="{StaticResource Label}" Text="Layout"/>
+                        <ComboBox x:Name="ModeCombo" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right"
+                                  SelectedValue="{Binding Mode, NotifyOnSourceUpdated=True}"/>
+
+                        <TextBlock Grid.Row="2" Style="{StaticResource Label}" Text="Keyboard size"/>
+                        <Slider Grid.Row="2" Grid.Column="1" Minimum="0.5" Maximum="1.8" SmallChange="0.05" LargeChange="0.1"
+                                x:Name="ScaleSlider" Value="{Binding KeyboardScale, NotifyOnSourceUpdated=True}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource Label}" Margin="8,0,0,0"
+                                   Text="{Binding Value, ElementName=ScaleSlider, StringFormat={}{0:P0}}"/>
+
+                        <TextBlock Grid.Row="3" Style="{StaticResource Label}" Text="Key height"/>
+                        <Slider Grid.Row="3" Grid.Column="1" Minimum="0.6" Maximum="1.6" SmallChange="0.05" LargeChange="0.1"
+                                x:Name="KeyHeightSlider" Value="{Binding KeyHeightScale, NotifyOnSourceUpdated=True}"/>
+                        <TextBlock Grid.Row="3" Grid.Column="2" Style="{StaticResource Label}" Margin="8,0,0,0"
+                                   Text="{Binding Value, ElementName=KeyHeightSlider, StringFormat={}{0:P0}}"/>
+
+                        <TextBlock Grid.Row="4" Style="{StaticResource Label}" Text="Opacity"/>
+                        <Slider Grid.Row="4" Grid.Column="1" Minimum="0.3" Maximum="1" SmallChange="0.05" LargeChange="0.1"
+                                x:Name="OpacitySlider" Value="{Binding Opacity, NotifyOnSourceUpdated=True}"/>
+                        <TextBlock Grid.Row="4" Grid.Column="2" Style="{StaticResource Label}" Margin="8,0,0,0"
+                                   Text="{Binding Value, ElementName=OpacitySlider, StringFormat={}{0:P0}}"/>
+
+                        <CheckBox Grid.Row="5" Grid.ColumnSpan="3" Content="Number row (full layout)"
+                                  IsChecked="{Binding NumberRow, NotifyOnSourceUpdated=True}"/>
+                    </Grid>
+                </Border>
+
+                <TextBlock Style="{StaticResource Section}" Text="WINDOW"/>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{StaticResource Label}" Text="Keyboard position"/>
+                            <ComboBox x:Name="PositionCombo" Grid.Column="1" SelectedValue="{Binding Position, NotifyOnSourceUpdated=True}"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{StaticResource Label}" Text="Typing method"/>
+                            <ComboBox x:Name="TypingMethodCombo" Grid.Column="1" SelectedValue="{Binding TypingMethod, NotifyOnSourceUpdated=True}"/>
+                        </Grid>
+                        <TextBlock Foreground="{DynamicResource Kb.SubText}" TextWrapping="Wrap" FontSize="12" Margin="0,0,0,4"
+                                   Text="Switch to 'Simulated keystrokes' only if an app ignores the keyboard."/>
+                        <CheckBox Content="Always on top" IsChecked="{Binding AlwaysOnTop, NotifyOnSourceUpdated=True}"/>
+                        <CheckBox Content="Start with Windows (minimized)" IsChecked="{Binding StartWithWindows, NotifyOnSourceUpdated=True}"/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Style="{StaticResource Section}" Text="TROUBLESHOOTING"/>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <CheckBox Content="Record swipes to help improve accuracy" IsChecked="{Binding RecordSwipes, NotifyOnSourceUpdated=True}"/>
+                        <TextBlock Foreground="{DynamicResource Kb.SubText}" TextWrapping="Wrap" FontSize="12" Margin="0,0,0,4"
+                                   Text="Saves each swipe's path, the guessed words and the suggestion you picked to %APPDATA%\SlideKeyboard\gestures.log on this PC. It contains the words you swipe; turn it off and delete the file when done."/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Margin="2,16,2,0" TextWrapping="Wrap" Foreground="{DynamicResource Kb.SubText}" FontSize="12"
+                           Text="Privacy: predictions run entirely on this PC. Nothing you type is uploaded or saved; the keyboard only remembers the last few characters it typed, in memory, to manage spacing and corrections."/>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

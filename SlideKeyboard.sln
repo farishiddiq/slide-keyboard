@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E3990196-71F0-4E07-9DB7-A054E795A2F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlideKeyboard.Core", "src\SlideKeyboard.Core\SlideKeyboard.Core.csproj", "{5D674DB5-509A-4B58-8223-92C50125875E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlideKeyboard.App", "src\SlideKeyboard.App\SlideKeyboard.App.csproj", "{C98C2DE5-E64F-45AE-864A-F22C1A997D34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5A06DAB0-58B2-4A9F-BA23-852AB93B7673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlideKeyboard.Core.Tests", "tests\SlideKeyboard.Core.Tests\SlideKeyboard.Core.Tests.csproj", "{F7F1B9D5-9F72-445C-BAE2-A1524D101635}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D674DB5-509A-4B58-8223-92C50125875E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D674DB5-509A-4B58-8223-92C50125875E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D674DB5-509A-4B58-8223-92C50125875E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D674DB5-509A-4B58-8223-92C50125875E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98C2DE5-E64F-45AE-864A-F22C1A997D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98C2DE5-E64F-45AE-864A-F22C1A997D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98C2DE5-E64F-45AE-864A-F22C1A997D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98C2DE5-E64F-45AE-864A-F22C1A997D34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F1B9D5-9F72-445C-BAE2-A1524D101635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F1B9D5-9F72-445C-BAE2-A1524D101635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F1B9D5-9F72-445C-BAE2-A1524D101635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F1B9D5-9F72-445C-BAE2-A1524D101635}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D674DB5-509A-4B58-8223-92C50125875E} = {E3990196-71F0-4E07-9DB7-A054E795A2F1}
+		{C98C2DE5-E64F-45AE-864A-F22C1A997D34} = {E3990196-71F0-4E07-9DB7-A054E795A2F1}
+		{F7F1B9D5-9F72-445C-BAE2-A1524D101635} = {5A06DAB0-58B2-4A9F-BA23-852AB93B7673}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+{
+  // Letter rows in visual left-to-right order. Function keys are added automatically.
+  "rows": [
+    "q w e r t y u i o p",
+    "a s d f g h j k l",
+    "z x c v b n m"
+  ],
+  "hasShift": true,
+  "comma": ",",
+  "period": ".",
+  "digits": "1 2 3 4 5 6 7 8 9 0",
+  "symbolsLabel": "?123",
+  "lettersLabel": "ABC",
+  "longPress": {
+    "a": "à á â ä æ ã å ā",
+    "c": "ç ć č",
+    "e": "è é ê ë ē ę",
+    "i": "ì í î ï ī",
+    "n": "ñ ń",
+    "o": "ò ó ô ö õ ø œ ō",
+    "s": "ß ś š",
+    "u": "ù ú û ü ū",
+    "y": "ý ÿ",
+    "z": "ž ź ż",
+    ".": "? ! , ' \" : ; - … @ #",
+    ",": "; : ' \" !"
+  }
+}

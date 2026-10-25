@@ -1,0 +1,29 @@
+# Build output
+bin/
+obj/
+artifacts/
+publish/
+*.msi
+*.wixpdb
+
+# IDE / user files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+
+# Test results
+TestResults/
+*.trx
+
+# Local secrets / config (never commit)
+.env
+*.pfx
+*.snk
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

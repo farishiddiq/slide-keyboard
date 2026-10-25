@@ -1,0 +1,12 @@
+{
+  "code": "id",
+  "name": "Indonesian",
+  "nativeName": "Indonesia",
+  "shortLabel": "ID",
+  "culture": "id-ID",
+  "rtl": false,
+  "version": "1.0.0",
+  "wordsFile": "words.txt",
+  "bigramsFile": "bigrams.txt",
+  "layoutFile": "layout.json"
+}
